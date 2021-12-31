@@ -5,6 +5,7 @@
     <input v-model="newTodo" name="newTodo" />
     <button>Add New Todo</button>
   </form>
+  <button @click="removeAllTodos">Remove All</button>
   <button @click="markAllDone">Mark all done</button>
   <ul>
     <li v-for="(todo, index) in todos" :key="todo.id">
@@ -45,6 +46,10 @@ export default {
       todos.value.forEach((todo) => (todo.done = true));
     }
 
+    function removeAllTodos() {
+      todos.value = [];
+    }
+
     return {
       todos,
       newTodo,
@@ -52,6 +57,7 @@ export default {
       toggleDone,
       removeTodo,
       markAllDone,
+      removeAllTodos,
     };
   },
 };
